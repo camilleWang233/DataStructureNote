@@ -9,17 +9,21 @@
 <body>
     <div class="container">
         <button class="button_div" onclick="setUsername()"> 切换用户</button>
+        <button class="button_div" > <a href="./practice/ResultMessage.html">仙女算命</a></button>
         <h4></h4>
         <img src="../assets/imgs/001.jpg">
         </br>
-        <input class="searchbox" list="" placeholder="今天想测点什么呢">
-        <datalist id="dataList">
+        <div class="box">
+            <input class="searchbox" type="text" list="dataList" placeholder="今天想测点什么呢">
+            <datalist id="dataList">
 
-        </datalist><button onclick="showHistory()">search</button>
+            </datalist>
+            <button onclick="showHistory()" class="search">search</button>
+        </div>
     </div>
     <script src="welcome.js"></script>
-    <script src="SwitchPic.js"></script>
-    <script src="search2.js"></script>
+    <script src="./practice/SwitchPic.js"></script>
+    <script src="./practice/search2.js"></script>
 </body>
 
 </html>
@@ -27,12 +31,12 @@
     .container {
         text-align: center;
         background: #2B303A;
-        min-height: 500px;
+        min-height: 800px;
     }
 
     .button_div {
-        background: #FFCCCC;
-        color: #FF6666;
+        background: #FF6666;
+        color: yellow;
         border: none;
         border-radius: 10px;
         width: 10%;
@@ -40,15 +44,45 @@
         margin: 2%;
     }
 
+
     h4 {
         color: #FFCCCC;
     }
 
+    .box {
+        justify-content: space-evenly;
+
+    }
+
     .searchbox {
-        border-radius: 20px;
+        border-radius: 10px 0 0 10px;
         width: 40%;
-        line-height: 3;
+        height: 44px;
         border: 0;
-        margin: 2%;
+        margin: 2% 0 2% 2%;
+        padding-left: 40px;
+
+    }
+
+    .search {
+        width: 10%;
+        height: 44px;
+        border: 0;
+        margin: 2% 2% 2% 0;
+        background: #FFCCCC;
+        color: #FF6666;
+        font-size: 17px;
+        border-radius: 0 10px 10px 0;
+        font-weight: 400;
+    }
+
+    .datalist {
+        background: #FFCCCC;
+        width: 40%;
+
+    }
+    a {
+        color: yellow;
+        text-decoration:none;
     }
 </style>
