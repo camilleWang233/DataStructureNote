@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <input placeholder="请输入你想要占卜的事情">
+        <input type="email" placeholder="email">
+        <button onclick="showHistory()">Search</button>
+        <button onclick="visiable()">show</button>
+        <ul class="history">
+
+        </ul>
+        <br>
+        <input list="history" placeholder="头不要太铁">
+        <datalist id="history">
+            <option value="d=====(￣▽￣*)b" />
+            <option value="O(∩_∩)O" />
+            <option value="┭┮﹏┭┮" />
+
+        </datalist>
+
+    </div>
+    <script src="search.js"></script>
+</body>
+
+</html>
+<style>
+    .history {
+        opacity: 0;
+        background: yellow;
+    }
+</style>

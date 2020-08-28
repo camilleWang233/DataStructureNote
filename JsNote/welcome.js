@@ -1,6 +1,6 @@
 // 个性化欢迎
 let myButton = document.querySelector("button");
-let myHead = document.querySelector("h1");
+let myHead = document.querySelector("h4");
 function setUsername() {
   let myName = prompt("请输入姓名");
   if (!myName || myName === null) {

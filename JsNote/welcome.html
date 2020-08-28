@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
- 
+
 </head>
+
 <body>
     <div class="container">
-        <h1></h1>
-        <img src="../assets/imgs/001.jpg">
-    </br>
         <button class="button_div" onclick="setUsername()"> 切换用户</button>
+        <h4></h4>
+        <img src="../assets/imgs/001.jpg">
+        </br>
+        <input class="searchbox" list="" placeholder="今天想测点什么呢">
+        <datalist id="dataList">
+
+        </datalist><button onclick="showHistory()">search</button>
     </div>
     <script src="welcome.js"></script>
     <script src="SwitchPic.js"></script>
+    <script src="search2.js"></script>
 </body>
+
 </html>
 <style>
-    .container{
+    .container {
         text-align: center;
         background: #2B303A;
         min-height: 500px;
     }
-    .button_div{
+
+    .button_div {
         background: #FFCCCC;
         color: #FF6666;
         border: none;
@@ -30,7 +39,16 @@
         line-height: 2;
         margin: 2%;
     }
-    h1{
+
+    h4 {
         color: #FFCCCC;
+    }
+
+    .searchbox {
+        border-radius: 20px;
+        width: 40%;
+        line-height: 3;
+        border: 0;
+        margin: 2%;
     }
 </style>
