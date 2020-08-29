@@ -9,110 +9,104 @@
 
 <body>
     <div class="product_div">
-        <!-- <h2>天机不可泄露V1.0.0</h2> -->
-        <!-- <h2>天机不可泄露：唯物主义算命 V1.0.1</h2> -->
-        <h2>天机不可泄露：王氏智能算命系统 V1.0.2</h2>
+        <h2>天机不可泄露V1.0.0</h2>
         <input type="text" id="customname" placeholder="请输入名字最后一个字">
         <div>
             <label for="metric">信本土的神</label><input id="metric" type="radio" name="measure" value="metric" checked>
             <label for="american">信进口的神</label><input id="american" type="radio" name="measure" value="american">
-            <label for="nogod">我是坚定的唯物主义者</label><input id="american" type="radio" name="measure" value="american">
         </div>
         <!-- 点击按钮 -->
         <button class="randomize" onclick="result()">查看今日运势</button>
         <!-- 显示结果的区域 -->
         <p class="story">刮开有惊喜</p>
-        <P>本系统为塔罗、诸葛神算、四大吉时、神仙综合一体的智能算命系统，算命结果有理有据，十分靠谱</P>
     </div>
 </body>
 <!-- <script src="ResultMessage.js"></script> -->
 <script>
     // 1. 定义变量和函数
 
-const customName = document.getElementById("customname");
-const randomize = document.querySelector(".randomize");
-const story = document.querySelector(".story");
-// 随机返回数组中的元素
-function randomValueFromArray(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
+    const customName = document.getElementById("customname");
+    const randomize = document.querySelector(".randomize");
+    const story = document.querySelector(".story");
+    // 随机返回数组中的元素
+    function randomValueFromArray(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
 
-// 2. 纯文本字符串
+    // 2. 纯文本字符串
 
-const storyText =
-  "名字是猫，选择:inserta:[:inserte:]:insertb: - 不宜:insertc:，宜:insertd:。god保佑你。";
+    const storyText =
+        "名字是猫，选择:inserta:[:inserte:]:insertb: - 不宜:insertc:，宜:insertd:。god保佑你。";
 
-// inserta
-let insertA = ["女祭司[2]", "隐者[9]", "权杖[23]"];
+    // inserta
+    let insertA = ["女祭司[2]", "隐者[9]", "权杖[23]"];
 
-// insertb
-let insertB = [
-//   "一头猪，可祭天地，虽丧身，亦算好处。",
-//   " 坎宫 明夷变丰(明夷六四)",
-//   "  深山踞猛虎，虎啸出山窝，扬威抖擞，何怕人多。",
-//   " 龙生头角，将沛甘霖，六七八早，好济苍生。",
-  "金榜题名"
-];
+    // insertb
+    let insertB = [
+        "一头猪，可祭天地，虽丧身，亦算好处。",
+        " 坎宫 明夷变丰(明夷六四)",
+        "  在你所有的事业中都要谨慎，那些看似朋友的人，可能会成为你的敌人。",
+    ];
 
-//insertc
-let insertC = ["抽烟", "喝酒", "烫头","装xp系统"];
-//insertd
-let insertD = ["敲代码", "开车", "吃拉面","装xp系统","学习宪法","吃辣条"];
-// inserte
-let insertE = ["顺位", "逆位"];
+    //insertc
+    let insertC = ["抽烟", "喝酒", "烫头"];
+    //insertd
+    let insertD = ["敲代码", "开车", "吃拉面"];
+    // inserte
+    let insertE = ["顺位", "逆位"];
 
 
 
 
 
 
-// 3. 事件监听器和未完成的函数定义
-// 为 randomize 变量增加一个点击事件的监听器。于是当所引用的按钮被点击时，result() 函数就会运行。
-// randomize.addEventListener("click", result);
+    // 3. 事件监听器和未完成的函数定义
+    // 为 randomize 变量增加一个点击事件的监听器。于是当所引用的按钮被点击时，result() 函数就会运行。
+    // randomize.addEventListener("click", result);
 
-function result() {
-  console.log("2333");
-  let newStory = storyText;
+    function result() {
+        console.log("2333");
+        let newStory = storyText;
 
-  let result = "";
-  result = newStory.replace(/:inserta:/, randomValueFromArray(insertA));
-  result =  result.replace(/:insertb:/, randomValueFromArray(insertB));
-  result =  result.replace(/:insertc:/, randomValueFromArray(insertC));
-  result =  result.replace(/:insertd:/, randomValueFromArray(insertD));
-  result =  result.replace(/:inserte:/, randomValueFromArray(insertE));
-console.log(result);
+        let result = "";
+        result = newStory.replace(/:inserta:/, randomValueFromArray(insertA));
+        result = result.replace(/:insertb:/, randomValueFromArray(insertB));
+        result = result.replace(/:insertc:/, randomValueFromArray(insertC));
+        result = result.replace(/:insertd:/, randomValueFromArray(insertD));
+        result = result.replace(/:inserte:/, randomValueFromArray(insertE));
+        console.log(result);
 
 
-  if (customName.value !== "") {
-    // let name = customName.value;
-    result = result.replace(/猫/, customName.value);
+        if (customName.value !== "") {
+            // let name = customName.value;
+            result = result.replace(/猫/, customName.value);
 
-    console.log(result);
-  }
+            console.log(result);
+        }
 
-  if (document.getElementById("metric").checked) {
-    // newStory.replace(/god/, "上帝");
-    result = result.replace(/god/, "红娘");
-  } else if((document.getElementById("american").checked) ) {
-    result = result.replace(/god/, "丘比特");
-  }else{
-    result = result.replace(/god/, "马克思");
-  }
+        if (document.getElementById("metric").checked) {
+            // newStory.replace(/god/, "上帝");
+            result = result.replace(/god/, "红娘");
+        } else {
+            result = result.replace(/god/, "丘比特");
+        }
 
-  story.textContent = result;
-  story.style.visibility = "visible";
-}
+        story.textContent = result;
+        story.style.visibility = "visible";
+    }
 
 </script>
+
 </html>
 <style>
-    .product_div{
+    .product_div {
         text-align: center;
         background: #2B303A;
         min-height: 800px;
         padding: 2%;
     }
-    .randomize{
+
+    .randomize {
         background: #FFCCCC;
         color: #FF6666;
         border: none;
@@ -121,24 +115,28 @@ console.log(result);
         line-height: 2;
         margin: 2%;
     }
-    h2{
+
+    h2 {
         color: #FFCCCC;
 
     }
-    #customname{
+
+    #customname {
         margin: 1%;
         line-height: 3;
         border-radius: 5px;
         border: 0;
-        padding: 0 0 0 10px ;
+        padding: 0 0 0 10px;
     }
-    label{
+
+    label {
         color: #FFCCCC;
 
     }
-    p{
+
+    p {
         color: #FFCCCC;
         width: 22%;
-        margin:2% 39% ;
+        margin: 2% 39%;
     }
 </style>
