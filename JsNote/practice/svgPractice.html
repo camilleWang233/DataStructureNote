@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>阅后即焚</h1>
+        <input type="text" id="customname" placeholder="请输入一段话">
+        <br>
+        <button class="clickme" onclick="result()">确认</button>
+        <div class="test">
+        </div>
+    </div>
+    <script>
+        const customName = document.getElementById("customname");
+        let test = document.querySelector(".test");
+
+        function result() {
+            if (customName.value !== "") {
+                console.log(customName.value);
+
+                test.innerHTML = customName.value;
+                console.log(test);
+                test.style.opacity = '1';
+                setTimeout(function () {
+                    test.style.display = "none";
+                }, 1600);
+                setTimeout();
+
+
+
+            } else {
+                alert("输入不能为空");
+
+            }
+        }
+    </script>
+</body>
+
+</html>
+<style>
+    .container {
+        text-align: center;
+        background: palevioletred;
+        min-height: 800px;
+    }
+
+    .test {
+        opacity: 0;
+        background: yellow;
+    }
+
+    #customname {
+        border: 0;
+        border-radius: 10px;
+        width: 40%;
+        height: 30px;
+        padding: 1%;
+
+    }
+    .clickme{
+        border: 0;
+        border-radius: 10px;
+        width: 40%;
+        line-height: 1.5;
+        padding: 1%;
+        margin-top: 3%;
+        background-color: wheat;
+    }
+</style>
