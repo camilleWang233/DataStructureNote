@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="zindexTest.css"/>
+</head>
+
+<body>
+    <div class="box_div">
+        <div class="derss_div">
+            <div class="btn" onclick="dressme()" style="position: relative;"><img src="../../../assets/imgs/02.png"
+                    width="300px" style="    position: absolute;
+                    left: -115px;top: -62px;">
+
+                <p style="position: relative;top: 78px;">龙珠T恤</p>
+            </div>
+
+
+
+        </div>
+        <!-- 小人图片 -->
+        <div class=" person_div">
+            <div class="person_img">
+                <img class="test" src="../../../assets/imgs/01.png" style="width: 100%; z-index: 10;">
+            </div>
+
+        </div>
+        <div class=" z_div">
+            <p>X</p>
+            <input type="range" id="xRange" defaultValue="0" min="-180" max="180" " step=" 1" oninput="xFunction()">
+            <p>Y</p>
+            <input type="range" id="yRange"
+            defaultValue="0" min="-360" max="150" " step=" 1" oninput="yFunction()" >
+            <p>Z</p>
+            <input type="range" id="zRange"    defaultValue="11" min="-5" max="15" " step=" 1" oninput="zFunction()">
+            <p>旋转</p>
+            <input type="range" defaultValue="0" min="0" max="360" " step=" 1" id="xzRange" oninput="xzFunction()">
+
+
+        </div>
+    </div>
+    <script src="zindexTest.js"></script>
+
+</body>
+</html>
+
