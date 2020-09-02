@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  display: flex;
+  justify-content: space-between;
+}
+
+body > section {
+  background-color: aqua;
+  border: 1px solid #000;
+  min-width: 33%;
+  overflow: hidden;
+}
+.area {
+  position: relative;
+  padding-top: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+.area > .role {
+  background-color: yellow;
+}
+.area > .role > img {
+  height: 50%;
+  opacity: 1;
+  position: absolute;
+
+}
+
+.area > .coat {
+  background-color: orangered;
+}
+.area > .coat > img {
+  height: 50%;
+  position: absolute;
+  opacity: 1;
+ 
+}
