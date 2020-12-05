@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #ln #audio-btn {
+            width: 44px;
+            height: 44px;
+            margin: 100px auto;
+            background-size: 100% 100%;
+        }
+
+        #ln .on {
+            background: url('./imgs/audiogo.png') no-repeat 0 0;
+            -webkit-animation: rotating 1.2s linear infinite;
+            animation: rotating 1.2s linear infinite;
+        }
+
+        #ln .off {
+            background: url('./imgs/audioclose.png') no-repeat 0 0;
+        }
+
+        @-webkit-keyframes rotating {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotating {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ln">
+
+        <div id="audio-btn" class="on" onclick="ln.changeClass(this,'media')">
+
+            <audio loop="loop" src="./薛之谦,韩红 - 小尖尖.mp3" id="media" preload="preload"></audio>
+
+        </div>
+
+    </div>
+    <script src="jquery.min.js"></script>
+
+    <script>
+
+        var ln = {
+            // 改变状态方法
+            changeClass: function (target, id) {
+                console.log(this);
+
+                var className = $(target).attr('class');
+
+                var ids = document.getElementById(id);
+
+                (className == 'on')
+
+                    ? $(target).removeClass('on').addClass('off')
+
+                    : $(target).removeClass('off').addClass('on');
+
+                (className == 'on')
+
+                    ? ids.pause()
+
+                    : ids.play();
+
+            },
+
+            play: function () {
+                //audio play方法
+                document.getElementById('media').play();
+
+            }
+
+        }
+
+        ln.play();
+
+    </script>
+</body>
+
+</html>

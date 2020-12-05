@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+  }
+body{
+    text-align: center;
+}
+#sun{
+    /* infinite：无穷无尽，重复 */
+    animation: sun 3s ease;
+    transform-origin:  bottom right;
+transform-box: fill-box;
+}
+#right_car{
+
+    animation: right_car 3s ease  ;
+  
+}
+#left_car{
+
+    animation: left_car 3s ease  ;
+  
+}
+#cloud1,#cloud2{
+
+    animation: left_car 3s ease  ;
+  
+}
+#cloud3{
+
+    animation: right_car 3s ease  ;
+  
+}
+#right_bubble,#left_bubble{
+    stroke-dasharray: 800;
+    stroke-dashoffset: 0;
+    animation: messageBox 3s ease  ;
+
+    /* animation-delay:3s; */
+    /* transform-origin: top left; */
+  
+}
+
+@keyframes sun{
+    from{
+        transform: rotateZ(-180deg);
+    }
+    to{
+        transform: rotateZ(0deg);
+    }
+}
+@keyframes right_car{
+    from{
+        transform:translateX(400px);
+    }to{
+        transform:translateX(0px);
+    }
+}
+@keyframes left_car{
+    from{
+        transform:translateX(-400px);
+    }to{
+        transform:translateX(0px);
+    }
+}
+@keyframes spin{
+    0%{
+transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-100%);
+
+    }
+}
+@keyframes messageBox{
+    from{
+        stroke-dashoffset: 800;
+        fill:white;
+     
+    }to{
+        stroke-dashoffset: 0;
+        fill: rgb(108, 99, 255);
+   
+
+    }
+}
+#right_mark,#left_mark{
+    /* stroke-dasharray: 300;
+    stroke-dashoffset: 0; */
+    animation: right_mark 2s linear;
+   /* animation-delay:-1s; */
+}
+@keyframes right_mark{
+    from{
+        /* transform: translateY(100%) rotateZ(180deg);  */
+        /* stroke-dashoffset: 300; */
+        stroke-dasharray: 0 120;
+    }to{
+        /* transform: translateY(0%) rotateZ(0deg); */
+        /* stroke-dashoffset: 0; */
+        stroke-dasharray:  120 0;
+    }
+}

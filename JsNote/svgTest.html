@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .abc {
+            color: aqua;
+        }
+
+        #abc {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <svg width='200' height='200'>
+            <circle></circle>
+
+        </svg>
+    </div>
+
+    <div id="abc" class="abc"> abc</div>
+
+</body>
+<script src="./svgTest.js"></script>
+
+<script>
+    let test1 = document.getElementById('abc');
+    console.log('test1:', test1);
+    let test2 = document.getElementsByClassName('abc');
+    console.log('test2:', test2);
+</script>
+
+</html>

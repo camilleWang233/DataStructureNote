@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+  }
+body{
+    text-align: center;
+}
+#hair_bottom{
+    animation: hair_bottom 1s ease-in-out infinite alternate;
+    transform-origin: top;
+    transform-box: fill-box;
+}
+#hair_top{
+    animation: hair_top 1s ease-in-out infinite alternate;
+    transform-origin: top;
+    transform-box: fill-box;
+}
+#head_bottom{
+    animation: head_bottom 1s ease-in-out infinite alternate;
+    transform-origin:top;
+    transform-box: fill-box;
+}
+#head_top{
+    animation: head_top 1s ease-in-out infinite alternate;
+    transform-origin:bottom;
+    transform-box: fill-box;
+}
+@keyframes hair_bottom{
+    from{
+        transform: translateX(0%) rotateZ(0);
+    }to{
+        transform: translateX(30%) rotateZ(15deg);
+    }
+}
+@keyframes hair_top{
+    from{
+        transform: translateX(0%) rotateZ(0);
+    }to{
+        transform: translateX(30%) rotateZ(10deg);
+    }
+}
+@keyframes head_bottom{
+    from{
+        transform: translateX(0%) rotateZ(0);
+    }to{
+        transform: translateX(25%) rotateZ(17deg);
+    }
+}
+@keyframes head_top{
+    from{
+        transform: translateX(0%) rotateZ(0);
+    }to{
+        transform: translateX(25%) rotateZ(-17deg);
+    }
+}
+#box_right,#Vector_11{
+    transform-origin: bottom left;
+    transform-box: fill-box;
+    animation-delay: 1s;
+    animation: box_right 4s ease-in-out ;
+}
+@keyframes box_right{
+    from{
+transform: scale(0,0);
+    }
+
+    to{
+        transform: scale(1,1);
+
+    }
+}
+#box_left,#Vector_10{
+    transform-origin: bottom right;
+    transform-box: fill-box;
+    animation: box_left 3s ease-in-out ;
+}
+@keyframes box_left{
+    /* 拉伸scale(宽，高)  【0-1】 */
+    from{
+transform: scale(0,0);
+    }
+
+    to{
+        transform: scale(1,1);
+
+    }
+}
+#message_1{
+    transform-origin:  left;
+    transform-box: fill-box;
+    animation-delay:3s;
+    animation: message_1  6s ease ;
+}
+#message_3{
+    transform-origin:  left;
+    transform-box: fill-box;
+    animation-delay:  4s;
+    animation: message_1  7s ease ;
+}
+#message_2{
+    transform-origin:  left;
+    transform-box: fill-box;
+    animation-delay: 4s;
+    animation: message_2 8s ease ;
+}
+#message_4{
+    transform-origin:  left;
+    transform-box: fill-box;
+    animation-delay: 5s;
+    animation: message_2 9s ease ;
+}
+@keyframes message_1{
+    from{
+        transform: scale(0,1);
+        fill: white;
+    }
+  50%{
+    transform: scale(0,1);
+  }
+  65%{
+      transform: scale(1,1);
+  }
+
+    80%{
+        transform: scale(0.9,1);
+    }
+    to{
+        transform: scale(1,1);
+        
+    }
+}
+@keyframes message_2{
+    from{
+        transform: scale(0,1);
+        fill: white;
+    }
+  65%{
+    transform: scale(0,1);
+  }
+ 75%{
+      transform: scale(1,1);
+  }
+
+    80%{
+        transform: scale(0.9,1);
+    }
+    to{
+        transform: scale(1,1);
+        
+    }
+}
+#circle_1{
+    transform-origin:  left;
+    transform-box: fill-box;
+    /* animation-delay: circle 3s; */
+    animation: circle  6s ease ;
+}
+#circle_2{
+    transform-origin:  left;
+    transform-box: fill-box;
+    animation-delay: circle 4s;
+    animation: circle  7s ease ;
+}
+@keyframes circle{
+    from{
+        transform: scale(0,0);
+  
+    }
+    50%{
+        transform: scale(0,0);
+      }
+      70%{
+        transform: scale(1,1);
+
+      }
+    to{
+        transform: scale(1,1);
+        
+    }
+}

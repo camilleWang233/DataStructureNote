@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+  }
+body{
+    text-align: center;
+}
+/* 左边整个人悬浮 */
+#left_guy{
+    animation: left_body 5s ease-in-out infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+@keyframes left_body{
+    0%{
+transform: translateY(140%);
+    }
+    100%{
+        transform: translateY(0);
+
+    }
+}
+/* 左边人手 */
+#l_l_hand{
+    animation: l_l_hand 1s ease-in-out infinite alternate;
+    transform-origin: top right;
+    transform-box: fill-box;
+}
+@keyframes l_l_hand{
+    0%{
+transform: rotateZ(45deg);
+    }
+    100%{
+        transform: rotateZ(70deg);
+    }
+}
+#l_r_hand{
+    animation: l_r_hand 1s ease-in-out infinite alternate;
+    transform-origin: top left;
+    transform-box: fill-box;
+}
+@keyframes l_r_hand{
+    0%{
+transform: rotateZ(-65deg);
+    }
+    100%{
+        transform: rotateZ(-90deg);
+    }
+}
+/* 左边小孩的腿 */
+#r_leg{
+    animation: r_leg 1s ease-in-out infinite alternate;
+    transform-origin: top left;
+    transform-box: fill-box;
+}
+@keyframes r_leg{
+    0%{
+transform: rotateZ(80deg);
+    }
+    100%{
+        transform: rotateZ(30deg);
+    }
+}
+#l_leg{
+    animation: l_leg 1s ease-in-out infinite alternate;
+    transform-origin: top right;
+    transform-box: fill-box;
+}
+@keyframes l_leg{
+    0%{
+transform: rotateZ(10deg);
+    }
+    50%{
+        transform: rotateZ(-40deg);
+    }
+    100%{
+        transform: rotateZ(-80deg);
+    }
+}
+/* 左边小孩的帽子 */
+#l_hat{
+    animation: l_hat 5s ease-in-out infinite alternate;
+    transform-origin: bottom ;
+    transform-box: fill-box;
+}
+@keyframes l_hat{
+    0%{
+transform: rotateZ(20deg) translateX(0);
+fill: #CCCCCC;
+    }
+    100%{
+        transform: rotateZ(-30deg) translateX(5%);
+    fill: #6C63FF;
+    }
+}
+/* 左边小孩的嘴 */
+#l_mouse {
+    transform-origin: bottom right;
+    transform-box: fill-box;
+    animation: l_mouse 5s ease-in-out infinite alternate ;
+}
+@keyframes l_mouse{
+    0%{
+        transform: scale(0.5,0.5);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+/* 右边的小孩 */
+#r_eye{
+    animation: r_eye 5s ease-in-out infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+@keyframes r_eye{
+    0%{
+transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0);
+
+    }
+}
+/* 右边小孩的嘴 */
+#r_mouse {
+    transform-origin: bottom right;
+    transform-box: fill-box;
+    animation: r_mouse 5s ease-in-out infinite alternate;
+}
+@keyframes r_mouse{
+    0%{
+        transform: scale(0.5,0.1);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+#r_l_hand{
+    animation: r_l_hand 5s ease-in-out infinite alternate;
+    transform-origin:bottom right;
+    transform-box: fill-box;
+}
+@keyframes r_l_hand{
+    0%{
+transform: rotateZ(-45deg);
+    }
+    100%{
+        transform: rotateZ(0deg);
+    }
+}
+#r_r_hand{
+    animation: r_r_hand 1s ease-in-out infinite alternate;
+    transform-origin:top left;
+    transform-box: fill-box;
+}
+@keyframes r_r_hand{
+    0%{
+transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(-5deg);
+    }
+}
+#Vector_19,#l_body {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: breath 1s ease-in-out infinite alternate;
+}
+@keyframes breath{
+    0%{
+        transform: scale(0.97,0.97);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+#Vector_19,#l_body {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: breath 1s ease-in-out infinite alternate;
+}
+@keyframes breath{
+    0%{
+        transform: scale(0.97,0.97);
+    }
+    100%{
+        transform: scale(1,1);
+    }
+}
+#line10,#line9,#line8,#line7,#line6,#line5,#line4,#line3,#line2,#line1{
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation: line 5s ease-in-out infinite alternate;
+}
+@keyframes line{
+    0%{
+        transform: scale(0,0);
+    }
+    100%{
+        transform: scale(0,0);
+    }
+}
+
+/* ufo light  */
+#light1{
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation: light 1s ease-in-out infinite alternate;
+}
+@keyframes light{
+    0%{
+       fill: #6C63FF;
+    }
+    100%{
+fill: #fdcb6e;
+    }
+}
+#light2{
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation-delay: 1s;
+    animation: light 2s ease-in-out infinite alternate;
+}
+
+#light5{
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation-delay: 2s;
+    animation: light 3s ease-in-out infinite alternate;
+}
+#light4{
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation-delay: 3s;
+    animation: light 4s ease-in-out infinite alternate;
+}
+#light3{
+    transform-origin: bottom;
+    transform-box: fill-box;
+    animation-delay: 4s;
+    animation: light 5s ease-in-out infinite alternate;
+}
+#ufo{
+    animation: light 1s ease-in-out infinite alternate;
+
+}

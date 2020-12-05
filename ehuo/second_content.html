@@ -1,0 +1,484 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title>{$info['sl_title']}_{$setup['s_title']}</title>
+    {php echo register_jssdk();}
+</head>
+<style>
+    .ebgtop {
+        background: rgb(255, 207, 0);
+    }
+
+    .ebghead {
+        background: #12C93C;
+    }
+
+    .eui_top {
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+    }
+
+    .eui_top ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        width: 100%
+    }
+
+    .eui_top ul li {
+        width: 33%;
+        height: 45px;
+        float: left;
+    }
+
+    .eui_top ul li.title {
+        text-align: center;
+        color: black;
+        font-weight: bolder;
+    }
+
+    .eui_top ul li.goback {
+        text-indent: 12px;
+        color: #FFF;
+    }
+
+    .eui_top ul li.goback a {
+        color: black;
+    }
+
+    .eui_top ul li.fabu {
+        text-align: right;
+        color: #FFF;
+    }
+
+    .eui_top ul li.fabu a {
+        color: rgb(0, 109, 183);
+        font-weight: 600;
+    }
+
+    .eui_head {
+        width: 100%:;
+        height: 150px;
+    }
+
+    .mor {
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .mor span.money {
+        color: #F00;
+        float: right;
+    }
+
+    .mor span.times {
+        font-size: 12px;
+        color: #666;
+        margin-right: 5px;
+    }
+
+    .mor span.count {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .type {
+        font-size: 12px;
+        padding: 3px;
+        background: rgb(255, 207, 0);
+        color: black;
+        margin-right: 5px;
+        /*border: 1px #04B486 solid;*/
+        height: 15px
+    }
+
+    /*整个弹窗的样式*/
+    .vip_page {
+        position: fixed;
+        /*bottom: 39px;*/
+        bottom: -1500px;
+        background: white;
+        border-radius: 5%;
+        overflow: hidden;
+        width: 100%;
+        min-height: 300px;
+        transition: bottom 1s;
+
+    }
+
+    /* 显示价格的区域 */
+    .price_div {
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
+
+    }
+
+
+    /* 价格按钮 */
+    .price_content {
+        width: 24%;
+        margin: 1%;
+        padding: 2%;
+        height: 100px;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+        border: #418fbf 1px solid;
+        border-radius: 5px;
+        background: white;
+        color: #0a3d62;
+    }
+
+    .price_content:link {
+        border: #22a6b3 1px solid;
+        background-color: #dff9fb;
+    }
+
+    .price_conten:visited {
+        border: #22a6b3 1px solid;
+        background-color: #dff9fb;
+    }
+
+    .price_content:focus {
+        border: #22a6b3 1px solid;
+        background-color: #dff9fb;
+    }
+
+    .price_content:hover {
+        border: #22a6b3 1px solid;
+        background-color: #dff9fb;
+    }
+
+
+    .price_content:active {
+        border: #22a6b3 1px solid;
+        background-color: #dff9fb;
+    }
+
+
+
+
+    .price_content>h3 {
+        margin-top: 20%;
+    }
+
+
+    /*.choose_div {*/
+    /*    margin-top: 25%;*/
+
+
+    /*}*/
+
+    /* 是否购买提示 */
+    .buy_message {
+        /*width: 96%;*/
+        padding: 0 2%;
+        background: rgb(255, 207, 0);
+        /*background: linear-gradient(#0a3d62, #418fbf);*/
+        ;
+        line-height: 3;
+        color: black;
+
+    }
+
+    .rule_div {
+        line-height: 1.5;
+        /*font-size: 15px;*/
+
+    }
+
+    /* 底下那俩按钮 */
+    .vip_footer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        /*position: fixed;*/
+        bottom: 0;
+    }
+
+    .vip_footer>.vip_buy {
+        background: #0a3d62;
+
+    }
+
+    .vip_btn {
+        width: 40%;
+        margin: 2%;
+        background: #418fbf;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 2.7;
+        color: white;
+        border-radius: 5%;
+
+    }
+</style>
+<!-- head 中 -->
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weuix.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="/addons/easily_second/template/mobile/weui2/swipe.js"></script>
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weui.css" />
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weui2.css" />
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weui3.css" />
+<script src="/addons/easily_second/template/mobile/weui2/zepto.min.js"></script>
+
+<body>
+    <script>
+        $(function () {
+            //定义文本
+            const paragraph = $('#paragraph');
+            const paragraphText = paragraph.text();
+            const paragraphLength = paragraph.text().length;
+            //定义文章长度
+            const maxParagraphLength = 80;
+            //定义全文按钮
+            const paragraphExtender = $('#paragraphExtender');
+            var toggleFullParagraph = false;
+
+            //定义全文按钮
+            if (paragraphLength < maxParagraphLength) {
+                paragraphExtender.hide();
+            } else {
+                paragraph.html(paragraphText.substring(0, maxParagraphLength) + '...');
+                paragraphExtender.click(function () {
+                    if (toggleFullParagraph) {
+                        toggleFullParagraph = false;
+                        paragraphExtender.html('显示全文');
+                        paragraph.html(paragraphText.substring(0, maxParagraphLength) + '...');
+                    } else {
+                        toggleFullParagraph = true;
+                        paragraphExtender.html('收起');
+                        paragraph.html(paragraphText);
+                    }
+                });
+            };
+            const menu = $('#actionMenu');
+            const menuBtn = $('#actionToggle');
+            menuBtn.click(function () { menu.toggleClass('active') });
+        });
+
+
+    </script>
+
+    <div class="eui_top ebgtop">
+        <ul>
+            <li class="goback"><a href="javascript:history.go(-1)">返回</a></li>
+            <li class="title">二手交易</li>
+            <li class="fabu"><a href="{php echo $this->createMobileUrl('add')}">发布</a>&nbsp;&nbsp;</li>
+        </ul>
+    </div>
+    <div style="height:25px;"></div>
+
+    <!-- 开始 朋友圈 -->
+    <div class="weui_cells moments">
+        <!-- 普通的post -->
+        <div class="weui_cell moments__post">
+            <div class="weui_cell_hd">
+                <div style="width:100%; height:25px; line-height:25px; font-size:12px; color:#666; text-align:center;">
+                </div>
+            </div>
+            <div class="weui_cell_bd">
+
+                <h4 style=" width:100%; margin-bottom:15px;">{$info['sl_title']}</h4>
+
+                <!-- post内容 -->
+                <p id="paragraph" class="paragraph">{$info['sl_content']}</p>
+                <!-- 伸张链接 -->
+                <a id="paragraphExtender" class="paragraphExtender">显示全文</a>
+                <!-- 相册 -->
+                <div class="thumbnails">
+                    {loop $imgArr $index $item}
+                    <div class="thumbnail">
+                        <img src="{$item['content']}" />
+                    </div>
+                    {/loop}
+                </div>
+                <!-- 资料条 -->
+                <div class="mor"><span class="type">{$info['st_title']}</span><span class="money">
+                        {if $info['sl_money']==0}
+                        面议
+                        {else}
+                        ￥{$info['sl_money']}
+                        {/if}
+                    </span></div>
+                <div class="mor"><span class="times">{$info['sl_addtime']}</span><span
+                        class="count">浏览:{$info['sl_count']}</span></div>
+
+
+
+
+            </div>
+
+            <div class="weui_btn_area weui_btn_area_inline">
+                <!--<a href="tel:{$info['sl_phone']}" class="weui_btn weui_btn_primary">拨打电话</a>-->
+                <!--<a href="sms:{$info['sl_phone']}" class="weui_btn weui_btn_primary">发送短信</a>-->
+
+                <div class="weui_btn weui_btn_primary" onclick="showVip()" style="background:rgb(0, 109, 183)">拨打电话
+                </div>
+                <div class="weui_btn weui_btn_primary" onclick="showVip()" style="background:rgb(0, 109, 183)">发送短信
+                </div>
+
+
+            </div>
+
+
+
+
+            <!-- 结束 post -->
+        </div>
+    </div>
+
+
+
+    <!--弹窗内容-->
+    <div class="vip_page">
+        <!-- 是否购买vip提示 -->
+        <div class="choose_div">
+            <div class="buy_message">
+                <h4>是否购买VIP</h4>
+                <div class="rule_div">本产品信息平台管理费1元，如购买VIP则免费</div>
+            </div>
+            <!-- 显示价格的区域  -->
+            <div class="price_div">
+                <button class="price_content">
+                    <p>单次费用</p>
+                    <h3>￥{$payc}</h3>
+                </button>
+                <button class="price_content">
+                    <p>本月VIP</p>
+                    <h3>￥{$paym}</h3>
+                </button>
+                <button class="price_content">
+                    <p>终生VIP</p>
+                    <h3>￥{$payy}</h3>
+                </button>
+
+            </div>
+        </div>
+        <!-- 底下那两个按钮 -->
+        <div class="vip_footer">
+            <div class="vip_cancel vip_btn" onclick="cancelVip()">取消</div>
+            <!--<div class="vip_buy vip_btn" >确定支付</div>-->
+            <div class="vip_buy vip_btn" onclick="buyVip()">确定支付</div>
+
+        </div>
+
+    </div>
+    <!-- 结束 朋友圈 -->
+    {php include $this->template('footer');}
+    <script type="text/javascript">
+        var div_vanish = document.querySelector(".vip_page");
+        // 展示购买页面
+        function showVip() {
+            div_vanish.style.bottom = '39px';
+        }
+        // 隐藏购买页面
+        function cancelVip() {
+            var div_vanish = document.querySelector(".vip_page");
+            // alert(  "233",  div_vanish.style.bottom);
+            div_vanish.style.bottom = '-1500px';
+        }
+        // 支付
+
+        function buyVip() {
+            var content_url = "{php echo $this->createMobileUrl('addorder');}";
+            $.ajax({
+                dataType: "json",
+                url: content_url,
+                type: "POST",
+                traditional: true,
+                data: {
+                    "method": { php echo $payinfo['method']},
+                    "tid": { php echo $payinfo['tid']},
+                    "title": '发布二手信息',
+                    "fee": "1",
+                    "type": "1",
+                    "module": { php echo $payinfo['module']},
+                },
+                beforeSend: function () { },
+                success: function (json) {
+                    console.log("json is", json.type);
+                    console.log("json is", json.message.message.appId);
+                    if (json.type == 'error') {
+                        $.alert(json.msg, "错误");
+                    } else {
+                        function onBridgeReady() {
+                            WeixinJSBridge.invoke(
+                                'getBrandWCPayRequest', {
+                                "appId": json.message.message.appId,     //公众号名称，由商户传入     
+                                "timeStamp": json.message.message.timeStamp,         //时间戳，自1970年以来的秒数     
+                                "nonceStr": json.message.message.nonceStr, //随机串     
+                                "package": json.message.message.package,
+                                "signType": json.message.message.signType,         //微信签名方式：     
+                                "paySign": json.message.message.paySign //微信签名 
+                            },
+                                function (res) {
+                                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                        // 使用以上方式判断前端返回,微信团队郑重提示：
+                                        //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+                                        console.log("2333");
+                                        // window.location.href = content_url + "&slid=" + json.slid;
+
+                                    } else {
+                                        console.log("支付失败");
+                                    }
+                                });
+                        }
+                        if (typeof WeixinJSBridge == "undefined") {
+                            if (document.addEventListener) {
+
+                                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                            } else if (document.attachEvent) {
+                                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                            }
+                        } else {
+                            console.log("2333");
+                            onBridgeReady();
+
+                        }
+                    }
+                },
+                complete: function () { },
+                error: function (data) {
+                    console.info("error:" + data.responseText)
+                }
+            });
+        }
+
+        wx.ready(function () {
+            sharedata = {
+                title: "{$info['sl_title']}_{$setup['s_title']}",
+                desc: "{$info['sl_content']}",
+            };
+            wx.onMenuShareAppMessage(sharedata);
+            wx.onMenuShareTimeline(sharedata);
+            wx.onMenuShareQQ(sharedata);
+            wx.onMenuShareQZone(sharedata);
+            wx.onMenuShareWeibo(sharedata);
+
+        });
+    </script>
+</body>
+
+</html>

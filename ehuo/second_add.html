@@ -1,0 +1,511 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <title>添加二手信息_{$setup['s_title']}</title>
+    {php echo register_jssdk();}
+</head>
+<style>
+    .ebgtop {
+        background: rgb(255, 207, 0);
+        font-color: black;
+    }
+
+    .ebghead {
+        background: #12C93C;
+    }
+
+    .eui_top {
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+    }
+
+    .eui_top ul {
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        width: 100%
+    }
+
+    .eui_top ul li {
+        width: 33%;
+        height: 45px;
+        float: left;
+    }
+
+    .eui_top ul li.title {
+        text-align: center;
+        color: black;
+        font-weight: bolder;
+    }
+
+    .eui_top ul li.goback {
+        text-indent: 12px;
+        color: black;
+    }
+
+    .eui_top ul li.goback a {
+        color: black;
+    }
+
+    .eui_top ul li.fabu {
+        text-align: right;
+        color: black;
+    }
+
+    .eui_top ul li.fabu a {
+        color: #FFF;
+    }
+
+    .eui_head {
+        width: 100%:;
+        height: 150px;
+    }
+
+    .mor {
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    .mor span.money {
+        color: #F00;
+        float: right;
+    }
+
+    .mor span.times {
+        font-size: 12px;
+        color: #666;
+        margin-right: 5px;
+    }
+
+    .mor span.count {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .type {
+        font-size: 12px;
+        padding: 3px;
+        background: rgb(255, 207, 0);
+        color: black;
+        margin-right: 5px;
+    }
+</style>
+<!-- head 中 -->
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weuix.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+<!-- body 最后 -->
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="/addons/easily_second/template/mobile/weui2/swipe.js"></script>
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weui.css" />
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weui2.css" />
+<link rel="stylesheet" href="/addons/easily_second/template/mobile/weui2/style/weui3.css" />
+<script src="/addons/easily_second/template/mobile/weui2/zepto.min.js"></script>
+<!--<script type="text/javascript" src="/app/resource/js/lib/jquery-1.11.1.min.js?v=20170802"></script>-->
+<script type="text/javascript" src="/app/resource/js/app/util.js"></script>
+<script type="text/javascript" src="/app/resource/js/require.js"></script>
+<script type="text/javascript" src="/app/resource/js/lib/mui.min.js?v=20170802"></script>
+<script type="text/javascript" src="/app/resource/js/app/common.js?v=20170802"></script>
+
+<body>
+
+    <div class="eui_top ebgtop">
+        <ul>
+            <li class="goback"><a href="javascript:history.go(-1)">返回</a></li>
+            <li class="title">发布二手信息</li>
+            <li class="fabu"></li>
+        </ul>
+    </div>
+    <div style="height:25px;"></div>
+
+
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cells_title">分类</div>
+        <div class="weui_cells">
+            <div class="weui_cell weui_cell_select">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="type" id="type">
+                        {loop $stype $index $item}
+                        <option value="{$item['stid']}">{$item['st_title']}</option>
+                        {/loop}
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="weui_cells_title">城市</div>
+        <div class="weui_cells">
+            <div class="weui_cell weui_cell_select">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <select class="weui_select" name="city" id="city">
+                        {loop $citys $index $item}
+                        <option value="{$item['scid']}" {if $item['scid']==$scid} selected="selected" {/if}>
+                            {$item['title']}</option>
+                        {/loop}
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="weui_cells_title">标题<span style="color:#F00">(*)</span></div>
+        <div class="weui_cells">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" placeholder="请输入标题" name="title" id="title" type="text">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="weui_cells_title">手机号<span style="color:#F00">(*)</span></div>
+        <div class="weui_cells">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" name="phone" id="phone" type="tel" required pattern="[0-9]{11}"
+                        maxlength="11" placeholder="输入你现在的手机号" emptyTips="请输入手机号" notMatchTips="请输入正确的手机号">
+                </div>
+            </div>
+        </div>
+        <div class="weui_cells_title">描述</div>
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <textarea id="textarea" class="weui_textarea" name="conten" placeholder="请输入描述" rows="3"></textarea>
+                    <div class="weui_textarea_counter"><span id='count'>0</span>/<span id='count_max'>20</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="weui_cells_title">价格</div>
+        <div class="weui_cells">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" name="money" id="money" placeholder="面议" type="text">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">图片上传</div>
+                        <div class="weui_cell_ft">0/2</div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files" id="files">
+                        </ul>
+                        <div class="weui_uploader_input_wrp">
+                            <input class="weui_uploader_input" type="file" multiple="multiple" id="filelogo"
+                                name="filelogo" onChange="upfile();">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="javascript:" id="btn" onclick="add()"
+            style="background:rgb(0, 109, 183)">确定</a>
+    </div>
+
+    <script>
+
+
+
+
+
+        $(function () {
+            var max = $('#count_max').text();
+            $('#textarea').on('input', function () {
+                var text = $(this).val();
+                var len = text.length;
+                $('#count').text(len);
+                if (len > max) {
+                    $(this).closest('.weui_cell').addClass('weui_cell_warn');
+                }
+                else {
+                    $(this).closest('.weui_cell').removeClass('weui_cell_warn');
+                }
+            });
+        })
+
+
+
+
+
+        function upfile() {
+            var timestamp = Date.parse(new Date());
+            var upload_url = "{php echo $this->createMobileUrl('upload');}";
+            var files = document.getElementById("files");
+            var formData = new FormData();
+            formData.append("filename", document.getElementById("filelogo").files[0]);
+
+            var f = 1
+
+            var file = document.getElementById('filelogo').files[0];
+            if (file) {
+                var fileSize = 0;
+                if (file.size > 1024 * 1024) {
+                    fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+                } else {
+                    fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+                }
+                //document.getElementById('fileName').innerHTML = 'Name: ' + file.name;
+                //document.getElementById('fileSize').innerHTML = 'Size: ' + fileSize;
+                //document.getElementById('fileType').innerHTML = 'Type: ' + file.type;
+
+                var xhr = new XMLHttpRequest();
+
+                /* 事件监听 */
+                xhr.upload.addEventListener("progress", uploadProgress, false);
+                xhr.addEventListener("load", uploadComplete, false);
+                xhr.addEventListener("error", uploadFailed, false);
+                xhr.addEventListener("abort", uploadCanceled, false);
+                /* 下面的url一定要改成你要发送文件的服务器url */
+                xhr.open("POST", upload_url);
+                xhr.send(formData);
+
+                function uploadProgress(evt) {
+                    if (evt.lengthComputable) {
+                        if (f == 1) {
+                            f = 2;
+                            uploadload();
+                        }
+                        var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+                        document.getElementById('upload_text').innerHTML = percentComplete.toString() + '%';
+                    } else {
+                        document.getElementById('upload_text').innerHTML = '无法计算';
+                    }
+                }
+
+                function uploadload(evt) {
+                    files.innerHTML = files.innerHTML + "<li class=\"weui-uploader__file weui-uploader__file_status\" id=\"file_" + timestamp + "\"><div class=\"weui-uploader__file-content\" id=\"upload_text\">1</div></li>";
+                }
+
+
+
+
+                function uploadComplete(evt) {
+                    /* 当服务器响应后，这个事件就会被触发 */
+                    //alert(evt.target.responseText);
+                    // 		alert(evt.target.responseText);
+                    var obj = JSON.parse(evt.target.responseText);
+                    alert("图片添加成功")
+                    if (obj.success == "ok") {
+                        //alert(123);
+                        //alert(obj.msg);
+                        $("#file_" + timestamp).remove();
+                        files.innerHTML = files.innerHTML + "<li name=\"bgfile\" class=\"weui-uploader__file\" id=\"img_" + timestamp + "\"></li>";
+                        $("#img_" + timestamp).css("background-image", "url(" + obj.fileurl + ")");
+                    }
+                }
+
+                function uploadFailed(evt) {
+                    alert("上传文件发生了错误尝试");
+                }
+
+                function uploadCanceled(evt) {
+                    alert("上传被用户取消或者浏览器断开连接");
+                }
+            }
+
+            /*$.ajax({
+                dataType: "json",
+                url: upload_url,
+                type: "POST",
+                data: formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                beforeSend :function () {
+                  files.innerHTML = files.innerHTML + "<li class=\"weui_uploader_file\" name=\"bgfile\" style=\"background-image:url('"+json.fileurl+"');\">上传中</li>";
+                },
+        
+                success: function (json) {
+                    if(json.success == 'ok'){
+                        alert(json.fileurl);
+                        files.innerHTML = files.innerHTML + "<li class=\"weui_uploader_file\" name=\"bgfile\" style=\"background-image:url('"+json.fileurl+"');\"></li>";
+                    }else{
+                        $.alert(json.msg, "错误");
+                        return false;
+                    }
+                },
+                error: function (data) {
+                    console.info("error: " + data.responseText);
+                },
+            });*/
+        }
+
+
+        function add() {
+
+            var type = $("#type").val();
+            var title = $("#title").val();
+            var phone = $("#phone").val();
+            var conten = $("#textarea").val();
+            var money = $("#money").val();
+            var city = $("#city").val();
+            var add_url = "{php echo $this->createMobileUrl('add');}";
+            var content_url = "{php echo $this->createMobileUrl('content');}";
+            //手机号正则  
+            var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;
+            //数字正则
+            var reg = /^[0-9]+.?[0-9]*$/;
+            //是否收费
+            var M_T = { $setup['s_money']};
+
+            if (title == '') {
+                $.alert("error:标题不能为空！", "错误");
+                return false;
+            }
+
+            if (phone == '') {
+                $.alert("error:手机号不能为空！", "错误");
+                return false;
+            }
+
+            if (!phoneReg.test(phone)) {
+                $.alert("error:请输入有效的手机号码！", "错误");
+                return false;
+            }
+
+            if (money != '') {
+                if (!reg.test(money)) {
+                    $.alert("error:请输入正确的金额！", "错误");
+                    return false;
+                }
+            }
+
+            var aLi = document.getElementsByName("bgfile");
+            var arr = [].slice.call(aLi);
+            var arrstr = new Array();
+            for (count = 0; count < arr.length; count++) {
+                arrstr[count] = new Array();
+                var str = arr[count]['style']['background-image'];
+                str = str.replace('url("', '');
+                str = str.replace('")', '');
+                arrstr[count][0] = count;
+                arrstr[count][2] = str;
+            }
+            var imgs = tojson(arrstr);
+
+            $('#btn').removeAttr('onclick');
+            $('#btn').css("background", "#999");
+
+            $.ajax({
+                dataType: "json",
+                url: add_url + "&ajax=ajax",
+                type: "POST",
+                traditional: true,
+                data: {
+                    "type": type,
+                    "title": title,
+                    "phone": phone,
+                    "conten": conten,
+                    "money": money,
+                    "imgs": imgs,
+                    "city": city
+                },
+                beforeSend: function () { },
+                success: function (json) {
+                    if (json.type == 'error') {
+                        $.alert(json.msg, "错误");
+                    } else {
+                        if (M_T == 1) {
+                            if (json.money == 0) {
+                                window.location.href = content_url + "&slid=" + json.slid;
+                            } else {
+                                util.pay({
+                                    orderFee: json.money,
+                                    payMethod: 'wechat',
+                                    orderTitle: json.title,
+                                    orderTid: json.orderTid,
+                                    module: 'recharge',
+                                    success: function (result) {
+                                        window.location.href = content_url + "&slid=" + json.slid;
+                                    },
+                                    fail: function (result) {
+                                        $("#btn").attr("onclick", "add();");
+                                        $('#btn').removeAttr("style");
+                                        $.getJSON("{php echo $this->createMobileUrl('delpay');}&slid=" + json.slid, function () { });
+                                    },
+                                    complete: function (result) {
+                                        if (result.message == 'get_brand_wcpay_request:cancel') {
+                                            $.getJSON("{php echo $this->createMobileUrl('delpay');}&slid=" + json.slid, function () { });
+                                        } else if (result.message == 'get_brand_wcpay_request:ok') {
+                                            $.getJSON("{php echo $this->createMobileUrl('addpay');}&type=" + type + "&slid=" + json.slid, function () { });
+                                        }
+                                        $("#btn").attr("onclick", "add();");
+                                        $('#btn').removeAttr("style");
+                                    }
+                                });
+                            }
+                        } else {
+                            window.location.href = content_url + "&slid=" + json.slid;
+                        }
+                    }
+                },
+                complete: function () { },
+                error: function (data) {
+                    console.info("error: " + data.responseText);
+                },
+            });
+
+
+        }
+
+        function tojson(arr) {
+            if (!arr.length) return null;
+            var i = 0;
+            len = arr.length,
+                array = [];
+            for (; i < len; i++) {
+                array.push({ 'id': arr[i][0], 'type': arr[i][1], 'content': arr[i][2] });
+            }
+            return JSON.stringify(array);
+        }
+
+        wx.ready(function () {
+            sharedata = {
+                title: "{$setup['s_title']}_发布二手信息",
+                desc: "{$setup['s_title']}，一个神奇的平台！",
+            };
+            wx.onMenuShareAppMessage(sharedata);
+            wx.onMenuShareTimeline(sharedata);
+            wx.onMenuShareQQ(sharedata);
+            wx.onMenuShareQZone(sharedata);
+            wx.onMenuShareWeibo(sharedata);
+
+        });
+    </script>
+    <div style="height:20px;"></div>
+
+    {php include $this->template('footer');}
+</body>
+
+</html>

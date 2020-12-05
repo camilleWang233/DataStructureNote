@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content_box {
+            width: 90%;
+            margin: 2%;
+            padding: 3%;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: right;
+            overflow: hidden;
+            position: relative;
+            min-height: 90px;
+        }
+
+        .detaile {
+            position: absolute;
+            right: 27px;
+            font-size: larger;
+            color: red;
+        }
+
+        .img_div {
+            width: 65px;
+            height: 65px;
+            background: yellow;
+            overflow: hidden;
+
+        }
+
+        .text_div {
+            margin-left: 2%;
+        }
+
+        .classify {
+            background: rgb(255, 207, 0);
+            padding: 2%;
+            width: min-content;
+            font-size: 10px;
+        }
+
+        /* 诚信商户标识 */
+        .honest {
+            width: 17px;
+            height: 17px;
+            background: red;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body style="background: aqua;">
+    <div>
+        <a class="content_box" href="www.baidu.com">
+            <div class="img_div"><img src="../assets/imgs/004.jpg" width="100%"></div>
+            <div class="text_div">
+                <div>title</div>
+                <div style="display: flex;    align-items: center;">
+                    <div class="classify">1111</div>
+                    <div class="honest" style="margin-left: 2%;overflow: hidden;"><img src="../assets/imgs/001.jpg"
+                            width="100%">
+                    </div>
+
+                </div>
+
+                <div style="color: #999;">contentdihaiudhuiawhi</div>
+                <div>time2020.1.1 浏览量2333</div>
+            </div>
+            <div class="detaile">￥2222</div>
+        </a>
+
+        <a class="content_box" href="{php echo $this->createMobileUrl('content')}&slid={$item['slid']}">
+            <div class="img_div"><img src="{$item['imgurl']}" width="100%"></div>
+            <div class="text_div">
+                <div>{$item['sl_title']}</div>
+                <div style="display: flex;    align-items: center;">
+                    <div class="classify">{$item['st_title']}</div>
+                    {if $item['trust']==1}
+                    <div class="honest" style="margin-left: 2%;overflow: hidden;"><img
+                            src="http://v3.leadersir.com/addons/easily_second/template/mobile/trust.png" width="100%">
+                    </div>
+                    {/if}
+                </div>
+
+                <div style="color: #999;">{$item['sl_content']}</div>
+                <div>{$item['sl_addtime']} 浏览:{$item['sl_count']}</div>
+            </div>
+            <div class="detaile">
+                {if $item['sl_money']==0}
+                面议
+                {else}
+                ￥{$item['sl_money']}
+                {/if}
+            </div>
+        </a>
+
+
+
+    </div>
+</body>
+
+</html>

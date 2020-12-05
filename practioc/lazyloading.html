@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .imglist {
+            width: 20vw;
+            margin: 0 calc((100vw - 20vw) / 2);
+        }
+
+        .imglist>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="imglist">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/001.jpg" alt="pic">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/002.jpg" alt="pic">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/003.jpg" alt="pic">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/004.jpg" alt="pic">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/005.jpg" alt="pic">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/004.jpg" alt="pic">
+        <img class="lazy" src="../assets/loading.gif" data-src="../assets/imgs/005.jpg" alt="pic">
+
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        const imgs = document.querySelectorAll('img');
+        function getTop(e) {
+            return e.offsetTop
+            // HTMLElement.offsetTop 为只读属性，它返回当前元素相对于其 offsetParent 元素的顶部的距离。
+        }
+        function loadingLazy(imgs) {
+            const client_height = window.innerHeight;
+            // const client_height = document.body.clientHeight;
+            const scroll_top = document.documentElement.scrollTop || window.scrollY || document.body.scrollTop;
+            for (let i = 0; i < imgs.length; i++) {
+                if ((client_height + scroll_top) > getTop(imgs[i])) {
+                    (function (i) {
+                        setTimeout(function () {
+                            const temp = new Image();
+                            temp.src = imgs[i].getAttribute('data-src');
+                            temp.onload = function () {
+                                imgs[i].src = imgs[i].getAttribute('data-src');
+                            }
+                        }, 2000)
+                    })(i)
+                }
+            }
+
+        }
+        loadingLazy(imgs);
+        window.onscroll = function () {
+            loadingLazy(imgs);
+
+        }
+    }
+</script>
+
+</html>

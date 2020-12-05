@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+  }
+body{
+    text-align: left;
+}
+
+#left_wheel,#right_wheel{
+    /* infinite重复播放 */
+animation: wheel 1s  infinite linear;
+/* 旋转原点是整个svg的中心 */
+transform-origin: center;
+transform-box: fill-box;
+}
+#body{
+    /* alternate播放完原路返回 */
+    animation: body 1s ease-in-out infinite alternate;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+#hat{
+    animation: hat 1s ease-in-out infinite alternate;
+    transform-origin: top;
+    transform-box: fill-box;
+}
+@keyframes wheel{
+    from{
+transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+
+    }
+}
+@keyframes body{
+    from{
+        
+        transform: rotateX(0deg);
+    }to{
+        transform: rotateX(20deg);
+
+    }
+}
+@keyframes hat{
+    from{
+       transform: translateY(0%) rotateZ(0);
+    }to{
+        transform: translateY(30%) rotateZ(5deg);
+
+    }
+}
+body{
+    animation: move 5s ease-in-out infinite alternate;
+    animation-fill-mode:forwards;
+    background: black no-repeat url('./roade.jpg') ;
+    background-size: 100% 100% ;
+}
+@keyframes move{
+    0%{transform:translateX(0px);}
+    100%{transform:translateX(1400px);}
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile-nav</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div class="phone">
+        <input type="radio" name="s" id="s1" checked="checked">
+        <input type="radio" name="s" id="s2">
+        <input type="radio" name="s" id="s3">
+        <input type="radio" name="s" id="s4">
+        <label for="s1"><img src="./home.svg" alt=""></label>
+        <label for="s2"><img src="./star.svg" alt=""></label>
+        <label for="s3"><img src="./people.svg" alt=""></label>
+        <label for="s4"><img src="./person.svg" alt=""></label>
+        <div class="circle"></div>
+        <div class="phone_content">
+            <div class="phone_bottom"><span class="indicator"></span></div>
+        </div>
+    </div>
+</body>
+
+</html>

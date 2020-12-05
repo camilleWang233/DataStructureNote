@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #audiu_btn {
+            width: 30px;
+            height: 30px;
+        }
+
+        .on {
+            background: url('./imgs/audiogo.png') no-repeat center/100%;
+            -webkit-animation: rotating 1.5s linear infinite;
+            animation: rotating 1.5s linear infinite;
+        }
+
+        .off {
+            background: url('./imgs/audioclose.png') no-repeat center/100%;
+            /* background-color: aqua; */
+        }
+
+        @-webkit-keyframes rotating {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotating {
+            from {
+                -webkit-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -ms-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="audiu_btn" class="on" onclick="audioControl()"></div>
+    <!-- autoplay: 自动播放
+    loop：循环播放 -->
+    <audio id="player" autoplay loop src="./music/薛之谦,韩红 - 小尖尖.mp3">
+
+    </audio>
+</body>
+<script>
+    const audiu_btn = document.getElementById("audiu_btn");
+    const audio_div = document.getElementById("player");
+
+    const audioControl = () => {
+        if (audio_div.paused) {
+            audio_div.play();
+            audiu_btn.classList.remove("off")
+            audiu_btn.classList.add("on")
+
+        } else {
+            audio_div.pause();
+            audiu_btn.classList.remove("on")
+            audiu_btn.classList.add("off")
+
+        }
+    }
+</script>
+
+</html>

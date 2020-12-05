@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <svg width="0" height="0" style="position:absolute;">
+        <clipPath id="test1" clipPathUnits="objectBoundingBox">
+            <ellipse cx=".5" cy=".5" rx=".4" ry=".2"></ellipse>
+            <rect x=".3" y=".1" width=".4" height=".8" rx=".1" ry=".1"></rect>
+        </clipPath>
+    </svg>
+
+    <!-- <svg width="0" height="0" style="position:absolute;">
+        <clipPath id="clipBound" clipPathUnits="objectBoundingBox">
+            <ellipse cx=".5" cy=".5" rx=".4" ry=".2"></ellipse>
+            <rect x=".3" y=".1" width=".4" height=".8" rx=".1" ry=".1"></rect>
+        </clipPath>
+    </svg> -->
+
+    <p>图标效果：<i class="icon_1"></i></p>
+</body>
+
+</html>
+<style>
+    .icon_1 {
+        clip-path: url(#test1);
+    }
+
+    .icon_1 {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: deepskyblue;
+        vertical-align: middle;
+    }
+</style>
