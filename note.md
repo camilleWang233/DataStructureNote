@@ -1,3 +1,50 @@
+http://192.168.0.143:8081/
+
+## NaN（not a number）
+
+- NaN 不能直接比较
+
+```js
+NaN === NaN;
+// false
+Number.NaN === NaN;
+// false
+```
+
+- 通过 Number.isNaN() or isNaN()判断是否是 NaN
+
+```js
+isNaN(Number.NaN);
+// true
+isNaN(NaN);
+// true
+Number.NaN(NaN);
+// true
+```
+
+- isNaN()与 Number.isNaN()的区别
+
+|                | value is currently NaN | value is going to be NaN |
+| :------------- | ---------------------: | :----------------------: |
+| isNaN()        |                   true |           true           |
+| Number.isNaN() |                   true |          false           |
+
+## Property attributes[属性特征]: writable\enumerable\configurable
+
+- writable:属性是否可写 false:只读
+- enumerable:属性是否可以被遍历
+- configurable:是否可以被删除，属性是否可更改
+  > 获取 obj 的属性特征(除了上面这三个还有 value、get、set)
+  > Object.getOwnPropertyDescriptor(obj, prop)
+
+## 响应式布局的方法
+
+- 1.float:left/right（指定 screen 最小宽度 @media screen and (min-width: 600px) ）
+- 2.column-count:指定把内容分多少列
+- 3.column-width: 10em; 指定最小宽度
+- 4.display: grid;
+  grid-template-columns: 1fr 1fr 1fr;css 网格
+
 ## ip 地址：每组 8 个二进制数，分四组转成 10 进制数(0-255)
 
 PAT 多对一映射：

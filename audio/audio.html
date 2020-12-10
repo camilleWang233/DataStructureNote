@@ -9,6 +9,7 @@
         #audiu_btn {
             width: 30px;
             height: 30px;
+            cursor: pointer;
         }
 
         .on {
@@ -64,13 +65,20 @@
     <div id="audiu_btn" class="on" onclick="audioControl()"></div>
     <!-- autoplay: 自动播放
     loop：循环播放 -->
-    <audio id="player" autoplay loop src="./music/薛之谦,韩红 - 小尖尖.mp3">
+    <audio id="player" autoplay loop preload="auto" src="./music/Friday Night Plans - Plastic Love.mp3">
 
     </audio>
 </body>
 <script>
     const audiu_btn = document.getElementById("audiu_btn");
     const audio_div = document.getElementById("player");
+    //  alert(audio_div.src)
+    // 默认自动播放
+    audio_div.play();
+    // ios及微信的自动播放
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        document.getElementById('player').play();
+    }, false);
 
     const audioControl = () => {
         if (audio_div.paused) {

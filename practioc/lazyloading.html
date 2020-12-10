@@ -32,6 +32,7 @@
 <script>
     window.onload = function () {
         const imgs = document.querySelectorAll('img');
+
         function getTop(e) {
             return e.offsetTop
             // HTMLElement.offsetTop 为只读属性，它返回当前元素相对于其 offsetParent 元素的顶部的距离。
@@ -55,6 +56,10 @@
             }
 
         }
+        // var o ={
+
+        // }
+
         loadingLazy(imgs);
         window.onscroll = function () {
             loadingLazy(imgs);

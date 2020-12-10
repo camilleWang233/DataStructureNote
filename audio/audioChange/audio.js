@@ -8,11 +8,21 @@ audiu_btn.setAttribute("onclick", "audioControl()");
 document.body.appendChild(audiu_btn);
 // 创建<audio>
 let audio_div = document.createElement("audio");
-audio_div.setAttribute("player", "player");
+audio_div.setAttribute("id", "player");
 audio_div.setAttribute("autoplay", "autoplay");
 audio_div.setAttribute("loop", "loop");
-audio_div.setAttribute("src", "./薛之谦,韩红 - 小尖尖.mp3");
+audio_div.setAttribute("preload", "auto");
+audio_div.setAttribute("src", "../music/薛之谦,韩红 - 小尖尖.mp3");
 document.body.appendChild(audio_div);
+// 默认自动播放
+audio_div.play();
+document.addEventListener(
+  "WeixinJSBridgeReady",
+  function () {
+    document.getElementById("player").play();
+  },
+  false
+);
 // 按钮点击事件
 const audioControl = () => {
   if (audio_div.paused) {

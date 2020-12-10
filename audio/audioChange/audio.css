@@ -4,13 +4,13 @@
 }
 
 .on {
-  background: url("./imgs/audiogo.png") no-repeat center/100%;
+  background: url("../imgs/audiogo.png") no-repeat center/100%;
   -webkit-animation: rotating 1.5s linear infinite;
   animation: rotating 1.5s linear infinite;
 }
 
 .off {
-  background: url("./imgs/audioclose.png") no-repeat center/100%;
+  background: url("../imgs/audioclose.png") no-repeat center/100%;
   /* background-color: aqua; */
 }
 
